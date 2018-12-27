@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata: 
+    name: sampleweb-service
+spec:
+  ports: 
+  - port: 80
+    nodePort: 31001
+    targetPort: tomcat-port
+    protocol: TCP 
+  selector:
+    app: sampleweb
+  type: NodePort
