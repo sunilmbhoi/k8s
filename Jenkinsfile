@@ -12,7 +12,7 @@ node {
 
   stage('Integration') {
 	
-    withKubeConfig([credentialsId: 'jenkins-deployer-credentials', serverUrl: 'https://192.168.56.191']) {
+    withKubeConfig([credentialsId: 'jenkins-deployer-credentials', serverUrl: 'https://192.168.56.191:6443']) {
       sh 'kubectl apply -f deploy/ --namespace=default'
       
     }
