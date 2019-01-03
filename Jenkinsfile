@@ -20,7 +20,7 @@ pipeline {
   }
 
      stage('Integration') {
-
+         sh "sed -i 's/imagename:tag/samplweb:${BUILD_NUMBER}/g' deploy/sample-deployment.yaml"
          withKubeConfig([credentialsId: 'jenkins-deployer-credentials', serverUrl: 'https://192.168.56.191:6443']) {
          sh 'kubectl apply -f deploy/ --namespace=default'
 
