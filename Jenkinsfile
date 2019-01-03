@@ -6,13 +6,11 @@ node {
   sh 'curl -v -u admin:admin123 --upload-file target/sampleweb.war http://192.168.56.1:8081/repository/jenkinsartifacts/sampleweb.war'
   }  
  stage('BuildImage'){
-  pipeline {
     agent { label 'docker-agent' }
     git url: 'https://github.com/sunilmbhoi/docker.git'
     sh 'curl -O -v http://192.168.56.1:8081/repository/jenkinsartifacts/sampleweb.war'
     sh 'docker build -t samplweb:${BUILD_NUMBER} . '
     sh 'docker tag samplweb:${BUILD_NUMBER} 192.168.56.1:5000/samplweb:${BUILD_NUMBER}'
     sh 'docker push 192.168.56.1:5000/samplweb:${BUILD_NUMBER}'
-}
  }
 }
