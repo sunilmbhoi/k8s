@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: sampleweb-tomcat
-        image: 192.168.56.1:5000/tomcat8.5:v2
+        image: 192.168.56.1:5000/imagename:tag
         ports:
           - name: tomcat-port
             containerPort: 8080
