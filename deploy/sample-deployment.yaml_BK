@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata: 
+  name: sampleweb
+  labels:
+    app: sampleweb
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sampleweb
+    spec:
+      containers:
+      - name: sampleweb-tomcat
+        image: 192.168.56.1:5000/imagename:tag
+        ports:
+          - name: tomcat-port
+            containerPort: 8080
+
